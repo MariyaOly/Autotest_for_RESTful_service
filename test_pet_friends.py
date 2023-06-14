@@ -28,3 +28,15 @@ def test_delete_pet():
     assert status == 200
     pet_id = result['pets'][0]['id']
     status, result
+
+ def test_update_pet_info():
+    _, auth_key = pf.get_api_key(valid_email, valid_password)
+    status, result = pf.get_list_of_pets(auth_key)
+    assert status == 200
+    pet_id = result['pets'][0]['id']
+    status, result = pf.update_pet_info(auth_key, pet_id, 'Sirius', 'dog', 4)
+    assert status == 200
+    assert result['name'] == 'Sirius'
+    assert result['animal_type'] == 'dog'
+    assert result['age'] == 4
+  
