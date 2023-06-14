@@ -16,10 +16,10 @@ def test_get_all_pets_with_valid_key(filter=''):
 
 def test_add_new_pet_with_valid_data():
     _, auth_key = pf.get_api_key(valid_email, valid_password)
-    status, result = pf.add_new_pet(auth_key, 'Мурзик', 'кот', 3, 'cat.jpg')
+    status, result = pf.add_new_pet(auth_key, 'Sirius', 'dog', 3, 'dog.jpg')
     assert status == 200
     assert result['name'] == 'Sirius'
-    assert result['animal_type'] == 'кот'
+    assert result['animal_type'] == 'dog'
     assert result['age'] == 3
 
 def test_delete_pet():
