@@ -13,4 +13,4 @@ The api library is written in a class, which is consistent with the principles o
 
 The methods have a subordinate description.
 
-Tests test the methods using the api library.
+Tests test the methods using the api library (requests.get, requests.post, requests.delete, requests.put)
