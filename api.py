@@ -23,4 +23,44 @@ class PetFriends:
         status = res.status_code
         result = res.json()
         return status, result
+    
+     def add_new_pet(self, auth_key, name, animal_type, age, pet_photo):
+        headers = {'auth_key': auth_key['key']}
+        data = {
+            'name': name,
+            'animal_type': animal_type,
+            'age': age
+        }
+        files = {'pet_photo': open(pet_photo, 'rb')}
 
+        res = requests.post(self.base_url + 'api/pets', headers=headers, data=data, files=files)
+
+        status = res.status_code
+        result = res.json()
+        return status, result
+
+    def delete_pet(self, auth_key, pet_id):
+        headers = {'auth_key': auth_key['key']}
+
+        res = requests.delete(self.base_url + f'api/pets/{pet_id}', headers=headers)
+
+        status = res.status_code
+        result = res.json()
+        return status, result
+
+    def update_pet_info(self, auth_key, pet_id, name, animal_type, age):
+        headers = {'auth_key': auth_key['key']}
+        data = {
+            'name': name,
+            'animal_type': animal_type,
+            'age': age
+        }
+
+        res = requests.put(self.base_url + f'api/pets/{pet_id}', headers=headers, data=data)
+
+        status = res.status_code
+        result = res.json()
+        return status, result
+
+    
+ 
